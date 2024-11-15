@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+   
+</head>
+<style>
+    body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar Styling */
+        nav {
+            background-color: #f8f9fa;
+        }
+
+        nav a {
+            color: #008080;
+            font-size: 18px;
+        }
+
+         a:hover {
+            color: darksalmon;
+            text-decoration: underline;
+        }
+
+    .selection {
+        display: flex;
+        justify-content: space-between;
+        padding: 2px;
+    }
+
+    section {
+        display: flex;
+        justify-content: space-around;
+    }
+
+
+    .head {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+       
+    }
+
+    .head img {
+        height: 300%;
+        width: 90%;
+    }
+
+    h1 {
+        margin-top: 20px;
+        font-size: 40px;
+        text-align: center;
+    }
+    #maintain:hover{
+        box-shadow: 4px 4px 10px rgba(239, 87, 87, 0.5);
+    }
+    
+</style>
+<body>
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">
+            <img src="https://img.freepik.com/premium-vector/text-design-alphabet-h-with-design_1310466-871.jpg?w=740"
+                alt="Logo" height="50">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link" href="hotel.html">Hotel</a>
+                <a class="nav-link" href="gallery.html">Gallery</a>
+                <a class="nav-link active" href="our rooms.html">Our Rooms</a>
+                <a class="nav-link" href="team.html">Team</a>
+                <a class="nav-link" href="service.html">Service</a>
+                <a class="nav-link" href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <h1 style="text-align: center; color:green;">Book Your Room</h1><br>
+
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <!-- Carousel Item 1 -->
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card" style="height: 550px;">
+                                <img src="https://img.freepik.com/free-photo/spacious-hotel-room-with-rug_1203-1495.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Room 1" height="220px">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Deluxe Room</h5>
+                                    <p class="card-text text-secondary">The Deluxe A/C Rooms are richly appointed double bedded rooms and are furnished with comfort in mind. Luxurious Queen-size </p>
+                                    <a href="#" class="btn btn-success m-5">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card " style="height: 550px;">
+                                <img src="https://img.freepik.com/premium-photo/hotel-room-with-bed-picture-bed-with-large-picture-tree-wall_1055732-5083.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Room 2">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Suite</h5>
+                                    <p class="card-text text-secondary">A suite is a collection of matching rooms. It usually refers to connected spaces, like when you book a suite at a luxury hotel.</p>
+                                    <a href="#" class="btn btn-success m-5">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card" style="height: 550px;">
+                                <img src="https://img.freepik.com/free-photo/room-interior-hotel-bedroom_23-2150683419.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Room 3"  height="220px">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Executive Room</h5>
+                                    <p class="card-text text-secondary">Executive rooms offer spacious accommodation designed with extra comfort for business travelers and guests </p>
+                                    <a href="#" class="btn btn-success m-5">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Item 2 -->
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card" style="height: 550px;">
+                                <img src="https://img.freepik.com/free-photo/small-juvenile-bedroom-arrangement_23-2151113827.jpg" alt="Room 4"  height="230px">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Junior Suite</h5>
+                                    <p class="card-text text-secondary">A cozy and modern room perfect for small families or short stays, offering all essential amenities for a comfortable experience.</p>
+                                    <a href="#" class="btn btn-success m-5">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card" style="height: 550px;">
+                                <img src="https://img.freepik.com/free-photo/wide-angle-shot-interior-building-including-pictures-chandelier-doors_181624-15116.jpg" alt="Room 5">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Classic Room</h5>
+                                    <p class="card-text text-secondary">Furnished with authentic period furniture, the Classic Room offers a timeless design for guests who love traditional styles.</p>
+                                    <a href="#" class="btn btn-success m-5">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card" style="height: 550px;">
+                                <img src="https://img.freepik.com/free-photo/3d-rendering-luxury-bedroom-suite-resort-hotel-with-twin-bed-living_105762-2018.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Room 5">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Standard twin room</h5>
+                                    <p class="card-text text-secondary">A twin room is a hotel room with two single beds . Twin rooms are suitable for friends or colleagues  separate beds</p>
+                                    <a href="#" class="btn btn-success m-5">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Item 3 -->
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card" style="height: 550px;">
+                                <img src="https://img.freepik.com/free-photo/luxury-modern-home-interior-with-comfortable-furniture-generated-by-ai_188544-38262.jpg" alt="Room 6">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Presidential Suite</h5>
+                                    <p class="card-text text-secondary">The most luxurious suite in the hotel, offering spacious rooms, premium services, and breathtaking views.</p>
+                                    <a href="#" class="btn btn-success m-5">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card" style="height: 550px;">
+                                <img src="https://img.freepik.com/premium-photo/green-screen-with-green-background-green-screen_1022212-19158.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Room 7">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Studio Room</h5>
+                                    <p class="card-text text-secondary"> rooms offer living, sleeping, and often dining space all in one room. Some studio hotel rooms include a bed while others.</p>
+                                    <a href="#" class="btn btn-success m-5">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card" style="height: 550px;">
+                                <img src="https://img.freepik.com/premium-photo/ai-generated-cozy-bedroom-modern-apartment-single-bed-detailed-small-room_1319275-2329.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Room 7">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Single Room</h5>
+                                    <p class="card-text text-secondary">  intended to sleep one person  likely has one king or queen bed in the room. Double rooms, sometimes called double-double</p>
+                                    <a href="#" class="btn btn-success m-5">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Carousel Controls -->
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-- <div class="d-flex flex-row justify-content-between m-5 p-5" >
+        <img src="https://img.freepik.com/premium-photo/hotel-with-pool-hotel-background_1078211-525793.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" width="400px" height="450px" style="margin-left: 220px;  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);" id="maintain">
+        <p class="p-5" style="text-align: center; border: 1px groove grey; margin-right: 20px; height: 400px; width: 500px;  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); "> <span style="font-size: 24px; font-family: sans-serif; font-weight: bold;  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);">Room maintenance :</span> <br>perform routine inspections of buildings to identify and address maintenance needs, including plumbing, electrical, and structural issues. Conduct repairs on doors, windows, floors, and walls to maintain a secure and aesthetically pleasing environment.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores doloribus, perferendis vero inventore omnis nostrum. Sit, est vero a provident cum earum quasi.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores doloribus, perferendis vero inventore omnis nostrum. Sit, est vero a provident cum earum quasi.</p>
+    </div> -->
+    <div class="container">
+        <div class="row m-5 p-2">
+            <div class="col-12 col-lg-4 col-md-6 col-sm-12">
+                <img src="https://img.freepik.com/premium-photo/hotel-with-pool-hotel-background_1078211-525793.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" width="400px" height="450px" style="margin-left: 10px;  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);" id="maintain">
+            </div>
+            <div class="col-12 col-lg-8 col-md-6 col-sm-12 p-5">
+                <p class="p-5" style="text-align: center; border: 1px groove grey; margin-left: auto; height: 400px; width: 500px;  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); "> <span style="font-size: 24px; font-family: sans-serif; font-weight: bold;  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);">Room maintenance :</span> <br>perform routine inspections of buildings to identify and address maintenance needs, including plumbing, electrical, and structural issues. Conduct repairs on doors, windows, floors, and walls to maintain a secure and aesthetically pleasing environment.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores doloribus, perferendis vero inventore omnis nostrum. Sit, est vero a provident cum earum quasi.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores doloribus, perferendis vero inventore omnis nostrum. Sit, est vero a provident cum earum quasi.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

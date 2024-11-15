@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+
+    <!-- Bootstrap CSS & JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar Styling */
+        nav {
+            background-color: #f8f9fa;
+        }
+
+        nav a {
+            color: #008080;
+            font-size: 18px;
+        }
+
+        a:hover {
+            color: darksalmon;
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://img.freepik.com/premium-photo/hotel-room-images-background-copy-space_1179130-711122.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid') no-repeat center/cover;
+            height: 70vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-overlay {
+            /* background-color: rgba(95, 94, 94, 0.5); */
+            background-color: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 22px;
+            margin-top: 10px;
+            z-index: 1;
+        }
+
+        /* Form and Modal Section */
+        .selection {
+            display: grid;
+            grid-template-columns:auto auto auto auto;
+             gap: 15px;
+            padding: 30px; 
+            text-align: center;
+        }
+
+        .modal-header {
+            background-color: #008080;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #008080;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: white;
+            margin: 0 15px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+        /* gallery Style */
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            background-color: #008080;
+            color: white;
+            font-size: 36px;
+        }
+
+        /* Masonry Grid Styles */
+        .masonry-grid {
+            column-count: 4;
+            column-gap: 10px;
+        }
+
+        .masonry-item {
+            margin-bottom: 10px;
+           
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .masonry-item img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .masonry-item:hover {
+            transform: scale(1.05);
+            box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        /* our room Style */
+        .selection {
+        display: flex;
+        justify-content: space-between;
+        padding: 2px;
+    }
+
+    section {
+        display: flex;
+        justify-content: space-around;
+    }
+
+
+    .head {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+       
+    }
+
+    .head img {
+        height: 300%;
+        width: 90%;
+    }
+
+    h1 {
+        margin-top: 20px;
+        font-size: 40px;
+        text-align: center;
+    }
+    #maintain:hover{
+        box-shadow: 4px 4px 10px rgba(239, 87, 87, 0.5);
+    }
+    /* Our Team Styleing */
+    h1 {
+      text-align: center;
+      margin: 40px 0;
+      font-size: 2.5rem; /* Increased font size for main heading */
+    }
+
+    /* Card Styling */
+    .card {
+      border: none;
+      border-radius: 15px; /* Rounded corners for cards */
+      overflow: hidden; /* Prevent overflow */
+      transition: transform 0.3s; /* Smooth transform on hover */
+    }
+
+    .card:hover {
+      transform: translateY(-10px); /* Lift effect on hover */
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+    }
+
+    .card-body1 {
+      background-color: rgb(188, 141, 108);
+      color: white;
+      text-align: center;
+      transition: background-color 0.3s; /* Smooth transition for background color */
+      height: 100px;
+    }
+
+    .card-body1 h3 {
+      opacity: 0;
+      transition: opacity 0.5s, transform 0.5s;
+      transform: translateY(20px);
+    }
+    .card:hover .card-body1 h3 {
+      opacity: 1;
+      transform: translateY(0);
+      background-color: rgb(205, 150, 111);
+      border-radius: 20px;
+      padding: 5px;
+      height: 50px;
+      text-decoration: underline;
+    }
+     /* Services Section */
+     .service-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            transition: 0.3s;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: auto;
+        }
+        footer{
+            background-color: #008080;
+            color: white;
+        }
+        footer a {
+            color: white;
+            margin: 0 15px;
+        }
+        .card1:hover{
+            background-color: rgba(200, 234, 234, 0.268);
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .card1{
+            border: 0.2px solid rgb(126, 125, 125);
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">
+            <img src="https://img.freepik.com/premium-vector/text-design-alphabet-h-with-design_1310466-871.jpg?w=740"
+                alt="Logo" height="50">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link active" href="hotel.html" >Hotel</a>
+                <a class="nav-link" href="gallery.html">Gallery</a>
+                <a class="nav-link" href="our rooms.html">Our Rooms</a>
+                <a class="nav-link" href="team.html">Team</a>
+                <a class="nav-link" href="service.html">Service</a>
+                <a class="nav-link " href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <div>
+            <h1>Welcome to Holiday Inn</h1>
+            <p>Your blend of comfort, luxury, and tropical beauty.</p>
+            <button class="btn btn-light btn-lg">Explore Now</button>
+        </div>
+    </div>
+
+    <!-- Search Section -->
+    <div class="container text-center mt-5">
+        <h3>Where to? <span style="color: grey; font-family: serif;">(Required)</span></h3>
+        <div class="input-group mb-3 w-50 mx-auto">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Enter Location</span>
+            </div>
+            <input type="text" class="form-control">
+            <button class="btn btn-success">Search</button>
+        </div>
+    </div><br>
+
+    <!-- Booking Section -->
+    <div class="selection container">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Login</button>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#checkinModal">Check-in</button>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#checkoutModal">Check-out</button>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#guestsModal">Guests</button>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal fade" id="loginModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="email" class="form-control mb-3" placeholder="Email">
+                    <input type="password" class="form-control" placeholder="Password">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button class="btn btn-success">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="checkinModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Check-in Date</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="date" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="checkoutModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Check-out Date</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="date" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="guestsModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Guests Information</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="number" class="form-control mb-3" placeholder="Number of Adults & Kids">
+                    <input type="number" class="form-control" placeholder="Number of Rooms">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div> <br><br><br><br>
+    <div class="header">
+        <h1 style=" font-family: 'Georgia', serif; font-size: 60px;">Gallery</h1>
+     </div>
+ 
+     <!-- Masonry Grid Gallery -->
+     <div class="container mt-4">
+         <div class="masonry-grid">
+ 
+             <!-- Grid Item 1 -->
+             <div class="masonry-item">
+                 <img src="https://img.freepik.com/premium-photo/large-painting-hangs-lobby-building_951220-61858.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid"
+                     alt="Italy">
+             </div>
+ 
+             <!-- Grid Item 2 -->
+             <div class="masonry-item">
+                 <img src="https://img.freepik.com/premium-photo/elegant-hotel-entrance-hall-showcasing-stylish-decor-luxurious-ambiance_1240525-80711.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid"
+                     alt="Britain">
+             </div>
+ 
+             <!-- Grid Item 3 -->
+             <div class="masonry-item">
+                 <img src="https://img.freepik.com/free-photo/sea-water-luxury-poolside-blue_1203-3873.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid"
+                     alt="Europe">
+             </div>
+ 
+             <!-- Grid Item 4 -->
+             <div class="masonry-item">
+                 <img src="https://img.freepik.com/free-photo/wooden-table-with-four-chairs_1203-1481.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid"
+                     alt="Singapore">
+             </div>
+ 
+             <!-- Grid Item 5 -->
+             <div class="masonry-item">
+                 <img src="https://img.freepik.com/premium-photo/elegant-hotel-entrance-hall-showcasing-stylish-decor-luxurious-ambiance_1240525-80763.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid"
+                     alt="Goa">
+             </div>
+ 
+             <!-- Grid Item 6 -->
+             <div class="masonry-item">
+                 <img src="https://img.freepik.com/free-photo/hotel-room-with-comfortable-couch_1203-1488.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid"
+                     alt="Africa">
+             </div>
+ 
+             <!-- Grid Item 7 -->
+             <div class="masonry-item">
+                 <img src="https://img.freepik.com/premium-photo/hotel-room-penthouse-with-breakfast_1015255-214859.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid"
+                     alt="Texas">
+             </div>
+ 
+             <!-- Grid Item 8 -->
+             <div class="masonry-item">
+                 <img src="https://img.freepik.com/free-photo/view-luxurious-hotel-interior-space_23-2150683505.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid"
+                     alt="Mexico">
+             </div>
+ 
+             <!-- Grid Item 9 -->
+             <div class="masonry-item">
+                 <img src="https://img.freepik.com/premium-photo/emirates-palace-hotel-lobby-abu-dhabi-united-arab-emirates_1028938-353378.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid"
+                     alt="Vietnam">
+             </div>
+ 
+             <!-- Grid Item 10 -->
+             <div class="masonry-item">
+                 <img src="https://img.freepik.com/premium-photo/room-with-couch-table-chandelier-hanging-from-ceiling_1212440-31930.jpg?ga=GA1.2.1709827706.1726588294&semt=ais_hybrid"
+                     alt="Mumbai">
+             </div>
+ 
+             <!-- Grid Item 11 -->
+             <div class="masonry-item">
+                 <img src="https://img.freepik.com/premium-photo/luxurious-hotel-lobby-with-marble-floor_1028938-357252.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid"
+                     alt="Canada">
+             </div>
+ 
+             <!-- Grid Item 12 -->
+             <div class="masonry-item">
+                 <img src="https://img.freepik.com/free-photo/view-luxurious-hotel-interior-space_23-2150683505.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid"
+                     alt="Malaysia">
+             </div>
+ 
+         </div>
+     </div>
+     <!-- our room -->
+     <h1 style="text-align: center; color:green; font-size: 60px; font-family: 'Georgia', serif;">Book Your Room</h1><br>
+
+     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+         <div class="carousel-inner">
+             <!-- Carousel Item 1 -->
+             <div class="carousel-item active">
+                 <div class="container">
+                     <div class="row">
+                         <div class="col-md-4">
+                             <div class="card" style="height: 550px;">
+                                 <img src="https://img.freepik.com/free-photo/spacious-hotel-room-with-rug_1203-1495.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Room 1" height="220px">
+                                 <div class="card-body text-center">
+                                     <h5 class="card-title">Deluxe Room</h5>
+                                     <p class="card-text text-secondary">The Deluxe A/C Rooms are richly appointed double bedded rooms and are furnished with comfort in mind. Luxurious Queen-size </p>
+                                     <a href="#" class="btn btn-success m-5">Book Now</a>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-md-4">
+                             <div class="card " style="height: 550px;">
+                                 <img src="https://img.freepik.com/premium-photo/hotel-room-with-bed-picture-bed-with-large-picture-tree-wall_1055732-5083.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Room 2">
+                                 <div class="card-body text-center">
+                                     <h5 class="card-title">Suite</h5>
+                                     <p class="card-text text-secondary">A suite is a collection of matching rooms. It usually refers to connected spaces, like when you book a suite at a luxury hotel.</p>
+                                     <a href="#" class="btn btn-success m-5">Book Now</a>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-md-4">
+                             <div class="card" style="height: 550px;">
+                                 <img src="https://img.freepik.com/free-photo/room-interior-hotel-bedroom_23-2150683419.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Room 3"  height="220px">
+                                 <div class="card-body text-center">
+                                     <h5 class="card-title">Executive Room</h5>
+                                     <p class="card-text text-secondary">Executive rooms offer spacious accommodation designed with extra comfort for business travelers and guests </p>
+                                     <a href="#" class="btn btn-success m-5">Book Now</a>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+ 
+             <!-- Carousel Item 2 -->
+             <div class="carousel-item">
+                 <div class="container">
+                     <div class="row">
+                         <div class="col-md-4">
+                             <div class="card" style="height: 550px;">
+                                 <img src="https://img.freepik.com/free-photo/small-juvenile-bedroom-arrangement_23-2151113827.jpg" alt="Room 4"  height="230px">
+                                 <div class="card-body text-center">
+                                     <h5 class="card-title">Junior Suite</h5>
+                                     <p class="card-text text-secondary">A cozy and modern room perfect for small families or short stays, offering all essential amenities for a comfortable experience.</p>
+                                     <a href="#" class="btn btn-success m-5">Book Now</a>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-md-4">
+                             <div class="card" style="height: 550px;">
+                                 <img src="https://img.freepik.com/free-photo/wide-angle-shot-interior-building-including-pictures-chandelier-doors_181624-15116.jpg" alt="Room 5">
+                                 <div class="card-body text-center">
+                                     <h5 class="card-title">Classic Room</h5>
+                                     <p class="card-text text-secondary">Furnished with authentic period furniture, the Classic Room offers a timeless design for guests who love traditional styles.</p>
+                                     <a href="#" class="btn btn-success m-5">Book Now</a>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-md-4">
+                             <div class="card" style="height: 550px;">
+                                 <img src="https://img.freepik.com/free-photo/3d-rendering-luxury-bedroom-suite-resort-hotel-with-twin-bed-living_105762-2018.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Room 5">
+                                 <div class="card-body text-center">
+                                     <h5 class="card-title">Standard twin room</h5>
+                                     <p class="card-text text-secondary">A twin room is a hotel room with two single beds . Twin rooms are suitable for friends or colleagues  separate beds</p>
+                                     <a href="#" class="btn btn-success m-5">Book Now</a>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+ 
+             <!-- Carousel Item 3 -->
+             <div class="carousel-item">
+                 <div class="container">
+                     <div class="row">
+                         <div class="col-md-4">
+                             <div class="card" style="height: 550px;">
+                                 <img src="https://img.freepik.com/free-photo/luxury-modern-home-interior-with-comfortable-furniture-generated-by-ai_188544-38262.jpg" alt="Room 6">
+                                 <div class="card-body text-center">
+                                     <h5 class="card-title">Presidential Suite</h5>
+                                     <p class="card-text text-secondary">The most luxurious suite in the hotel, offering spacious rooms, premium services, and breathtaking views.</p>
+                                     <a href="#" class="btn btn-success m-5">Book Now</a>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-md-4">
+                             <div class="card" style="height: 550px;">
+                                 <img src="https://img.freepik.com/premium-photo/green-screen-with-green-background-green-screen_1022212-19158.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Room 7">
+                                 <div class="card-body text-center">
+                                     <h5 class="card-title">Studio Room</h5>
+                                     <p class="card-text text-secondary"> rooms offer living, sleeping, and often dining space all in one room. Some studio hotel rooms include a bed while others.</p>
+                                     <a href="#" class="btn btn-success m-5">Book Now</a>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-md-4">
+                             <div class="card" style="height: 550px;">
+                                 <img src="https://img.freepik.com/premium-photo/ai-generated-cozy-bedroom-modern-apartment-single-bed-detailed-small-room_1319275-2329.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Room 7">
+                                 <div class="card-body text-center">
+                                     <h5 class="card-title">Single Room</h5>
+                                     <p class="card-text text-secondary">  intended to sleep one person  likely has one king or queen bed in the room. Double rooms, sometimes called double-double</p>
+                                     <a href="#" class="btn btn-success m-5">Book Now</a>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+ 
+         </div>
+ 
+         <!-- Carousel Controls -->
+         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+             <span class="sr-only">Previous</span>
+         </a>
+         <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+             <span class="carousel-control-next-icon" aria-hidden="true"></span>
+             <span class="sr-only">Next</span>
+         </a>
+     </div>
+     <!-- <div class="d-flex flex-row justify-content-between m-5 p-5" >
+         <img src="https://img.freepik.com/premium-photo/hotel-with-pool-hotel-background_1078211-525793.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" width="400px" height="450px" style="margin-left: 220px;  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);" id="maintain">
+         <p class="p-5" style="text-align: center; border: 1px groove grey; margin-right: 20px; height: 400px; width: 500px;  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); "> <span style="font-size: 24px; font-family: sans-serif; font-weight: bold;  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);">Room maintenance :</span> <br>perform routine inspections of buildings to identify and address maintenance needs, including plumbing, electrical, and structural issues. Conduct repairs on doors, windows, floors, and walls to maintain a secure and aesthetically pleasing environment.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores doloribus, perferendis vero inventore omnis nostrum. Sit, est vero a provident cum earum quasi.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores doloribus, perferendis vero inventore omnis nostrum. Sit, est vero a provident cum earum quasi.</p>
+     </div> -->
+     <div class="container">
+         <div class="row m-5 p-2">
+             <div class="col-12 col-lg-4 col-md-6 col-sm-12">
+                 <img src="https://img.freepik.com/premium-photo/hotel-with-pool-hotel-background_1078211-525793.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" width="400px" height="450px" style="margin-left: 10px;  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);" id="maintain">
+             </div>
+             <div class="col-12 col-lg-8 col-md-6 col-sm-12 p-5">
+                 <p class="p-5" style="text-align: center; border: 1px groove grey; margin-left: auto; height: 400px; width: 500px;  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); "> <span style="font-size: 24px; font-family: sans-serif; font-weight: bold;  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);">Room maintenance :</span> <br>perform routine inspections of buildings to identify and address maintenance needs, including plumbing, electrical, and structural issues. Conduct repairs on doors, windows, floors, and walls to maintain a secure and aesthetically pleasing environment.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores doloribus, perferendis vero inventore omnis nostrum. Sit, est vero a provident cum earum quasi.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores doloribus, perferendis vero inventore omnis nostrum. Sit, est vero a provident cum earum quasi.</p>
+             </div>
+         </div>
+     </div>
+     <!-- Our Team -->
+     <h1 style="color:rgb(2, 5, 93); font-size: 60px; font-family: 'Georgia', serif;">𝐎𝐮𝐫 𝐒𝐩𝐞𝐜𝐢𝐚𝐥 𝐒𝐭𝐚𝐟𝐟</h1>
+
+     <div class="container mt-5">
+       <div class="row">
+         <!-- Card 1 -->
+         <div class="col-lg-3 col-md-6 mb-4">
+           <div class="card">
+             <img
+               src="https://img.freepik.com/premium-photo/job-hiring_1164846-16061.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid"
+               class="card-img-top" alt="Amruth - Manager" style="height: 400px;">
+             <div class="card-body1">
+               <h3 class="card-title">Amruth</h3>
+               <h4 class="card-text">Manager</h4>
+             </div>
+           </div>
+         </div>
+   
+         <!-- Card 2 -->
+         <div class="col-lg-3 col-md-6 mb-4">
+           <div class="card">
+             <img
+               src="https://img.freepik.com/premium-photo/catering-buffet-food-party-preparation-man_530697-39336.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid"
+               class="card-img-top" alt="Ronald Gong - Chief Reception" style="height: 400px;">
+             <div class="card-body1">
+               <h3 class="card-title">Gowtham</h3>
+               <h4 class="card-text">Chief Reception</h4>
+             </div>
+           </div>
+         </div>
+   
+         <!-- Card 3 -->
+         <div class="col-lg-3 col-md-6 mb-4">
+           <div class="card">
+             <img
+               src="https://img.freepik.com/free-photo/medium-shot-professional-chef-posing_23-2151232166.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid"
+               class="card-img-top" alt="Shreekar - Master Chef" style="height: 400px;">
+             <div class="card-body1">
+               <h3 class="card-title">Shreekar</h3>
+               <h4 class="card-text">Master Chef</h4>
+             </div>
+           </div>
+         </div>
+   
+         <!-- Card 4 -->
+         <div class="col-lg-3 col-md-6 mb-4">
+           <div class="card">
+             <img
+               src="https://img.freepik.com/free-photo/portrait-smiling-young-hotel-maid-holding-stack-fresh-clean-towels-room_23-2148033246.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid"
+               class="card-img-top" alt="Jessica - Housekeeping" style="height: 400px;">
+             <div class="card-body1">
+               <h3 class="card-title">Jessica</h3>
+               <h4 class="card-text">Housekeeping</h4>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div><br><br><br><br>
+      <!-- Services Section -->
+    <div class="container my-5">
+        <h1 class="text-center mb-4" style="color:rgb(170, 132, 17); font-size: 60px; font-family: 'Georgia', serif;">Services Provided by Holiday Inn</h1>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="service-card p-3 text-center">
+                    <img src="https://img.freepik.com/free-photo/pretty-lady-using-mobile-phone-bag-chair-creative-office_231208-2993.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Free Wi-Fi">
+                    <h3>Free Wi-Fi</h3>
+                    <p>Enjoy high-speed internet access throughout the hotel, allowing you to stay connected at all times.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="service-card p-3 text-center">
+                    <img src="https://img.freepik.com/premium-photo/young-hotel-maid-medical-mask-bringing-tray-with-breakfast-room-businessman_274689-19696.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Room Service">
+                    <h3>Room Service</h3>
+                    <p>Indulge in our 24-hour room service with a wide range of delicious meals and beverages.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="service-card p-3 text-center">
+                    <img src="https://img.freepik.com/premium-photo/beautiful-outdoor-swimming-pool-luxury-hotel-resort-with-blue-sky-leisure-relax-holiday_326694-73621.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Swimming Pool">
+                    <h3>Swimming Pool</h3>
+                    <p>Relax and unwind at our outdoor swimming pool, complete with sun loungers and cabanas.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="service-card p-3 text-center">
+                    <img src="https://img.freepik.com/free-photo/medium-shot-woman-laying-towel_23-2149089238.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Spa & Wellness">
+                    <h3>Spa & Wellness</h3>
+                    <p>Rejuvenate your mind and body with our exclusive  with our exclusive  spa treatments and wellness programs.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="service-card p-3 text-center">
+                    <img src="https://img.freepik.com/free-photo/people-pilates-reformer-class-exercising-their-bodies_23-2150858007.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Fitness Center">
+                    <h3>Fitness Center</h3>
+                    <p>Stay fit during your stay with our fully equipped  with our exclusive  fitness center available 24/7.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="service-card p-3 text-center">
+                    <img src="https://img.freepik.com/premium-photo/conference-room-with-customdesigned-table-chairs_1177965-48446.jpg?ga=GA1.1.1709827706.1726588294&semt=ais_hybrid" alt="Conference Facilities">
+                    <h3>Conference Facilities</h3>
+                    <p>Host your meetings and events in our state-of-the-art conference rooms with all necessary amenities.</p>
+                </div>
+            </div>
+        </div>
+    
+  </div>
+
+  <h2 class="text-center" style="font-family: 'Georgia', serif;color: rgb(214, 48, 214); font-size: 60px;">Contact Us</h2>
+  <div class="container m-1 p-2">
+      <div class="row p-5">
+          <div class="col-md-6 card1 m-2 p-3 ml-auto mr-auto" >
+              <form class="m-5 p-2">
+                  <h3 class="p3 text-success m-5">Get Touch With US </h3>
+                  <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" class="form-control" id="name" required >
+                      
+                    </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                    
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Message</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                  <button type="submit" class="btn btn-primary">send message</button>
+                </form>
+          </div>
+          <div class="col-md-5">
+             <div class="card1 p-5 m-5">
+              <h4 style="color: midnightblue;">Our Location</h4>
+              <p><strong style="color:rgb(238, 38, 178)">Holiday Inn</strong></p>
+              <p>Main Street,</p>
+              <p>city,State, ZIP code.</p> 
+              <p><strong>Phone:</strong> +91 123-4567</p>
+              <p><strong>Email:</strong> info@holidayinn.com</p>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d487295.22581163223!2d78.07838586924265!3d17.412077907948387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1729600792960!5m2!1sen!2sin" width="200" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+             </div>
+             
+
+          </div>
+      </div>
+  </div>
+  <footer class="text-center">
+      <p>&copy; 2024 Holiday Inn. All Rights Reserved.</p>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+     
+      <a class="bi bi-instagram p-2" style="font-size: 30px;"></a>
+      <a class="bi bi-telegram p-2" style="font-size: 30px;"></a>
+      <a class="bi bi-facebook p-2" style="font-size: 30px;"></a>
+      <a class="bi bi-twitter p-2" style="font-size: 30px;"></a>
+  </div>
+  </footer>
+
+</body>
+
+</html>
